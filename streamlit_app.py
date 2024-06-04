@@ -11,15 +11,10 @@ model = joblib.load('model.pkl')
 scalers = joblib.load('scaler.pkl')
 
 def predict_performance(features):
-    features_to_scale = ['EmployeeType', 'PayZone', 'DepartmentType', 'GenderCode', 
-                         'RaceDesc', 'MaritalDesc', 'CurrentEmployeeRating', 
-                         'EngagementScore', 'SatisfactionScore', 'WorkLifeBalanceScore']
     scaled_features = []
 
-    for i, feature in enumerate(features):
-        feature_name = features_to_scale[i]
-        scaled_feature = scalers[feature_name].transform([[feature]])[0][0]
-        scaled_features.append(scaled_feature)
+    scaled_features = scalers.transform(features)
+   
 
     prediction = model.predict([scaled_features])
     return prediction[0]
