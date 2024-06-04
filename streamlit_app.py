@@ -11,12 +11,11 @@ model = joblib.load('model.pkl')
 scalers = joblib.load('scaler.pkl')
 
 def predict_performance(features):
-    scaled_features = []
+    features_2d = [features]
 
-    scaled_features = scalers.transform(features)
-   
+    scaled_features = scalers.transform(features_2d)
 
-    prediction = model.predict([scaled_features])
+    prediction = model.predict(scaled_features)
     return prediction[0]
 
 EmployeeType = st.selectbox("Employee Type", [0, 1, 2], format_func=lambda x: 'Contract' if x == 0 else 'Full Time' if x == 1 else 'Part Time')
