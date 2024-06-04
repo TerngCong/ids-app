@@ -4,16 +4,12 @@ import pandas as pd
 import streamlit as st
 
 """
-# Welcome to Streamlit!
+# Employee Performance Prediction System
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
-
-In the meantime, below is an example of what you can do with just a few lines of code:
+Edit employee's detail below to predict his performance:
 """
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
+num_points = st.selectbox("Employee Type", [0, 1, 2], format_func=lambda x: 'Contract' if x == 0 else 'Full Time' if x == 1 else 'Part Time')
 num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
 
 indices = np.linspace(0, 1, num_points)
