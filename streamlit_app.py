@@ -8,7 +8,7 @@ Edit employee's detail below to predict his performance:
 """
 
 model = joblib.load('model.pkl')
-scalers = joblib.load('scaler.pkl')
+scalers = joblib.load('scaler2.pkl')
 
 def predict_performance(features):
     features_to_scale = ['EmployeeType', 'PayZone', 'DepartmentType', 'GenderCode', 
